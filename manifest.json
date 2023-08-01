@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Epub Reader",
+  "version": "1.0",
+  "description": "The best Epub-Reader extension of Chrome.",
+  "permissions": [
+    "tabs",
+    "bookmarks",
+    "topSites",
+    "storage"
+    // "fileSystem"
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background.js",
+      "axios.min.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "show tab inspector",
+    "default_icon": "img/open.png",
+    "default_popup": "popup.html"
+  },
+  // "chrome_url_overrides": {
+  //   "newtab": "newTab.html"
+  // },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ]
+}

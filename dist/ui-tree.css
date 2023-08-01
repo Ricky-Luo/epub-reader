@@ -1,0 +1,107 @@
+.ui-tree-root,
+.ui-tree-children,
+.ui-tree-item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /* height: 50px; */
+}
+
+.ui-tree-children {
+    margin-bottom: 3px;
+    display: none;
+}
+
+.ui-tree-item {
+    margin-left: 27px;
+    cursor: pointer;
+}
+
+.ui-tree-item-group {
+    margin-left: 17px;
+    height: auto !important;
+}
+
+.ui-tree-root>.ui-tree-item {
+    margin: 0;
+    font-weight: 600;
+    font-family: -webkit-pictograph;
+    /* height: 50px; */
+    /* line-height: 25px; */
+}
+
+.ui-tree-item[data-ui-tree-expanded=true]>.ui-tree-children {
+    display: block;
+}
+
+.ui-tree-item-toggler {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+    display: none;
+}
+
+.ui-tree-item-toggler:hover {
+    opacity: 0.8;
+}
+
+.ui-tree-item-toggler:before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    margin-top: -4px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 4px 0 4px 5px;
+    border-color: transparent transparent transparent #000;
+}
+
+.ui-tree-item[data-ui-tree-expanded=true]>.ui-tree-item-label .ui-tree-item-toggler:before {
+    left: 0;
+    border-width: 0 0 6px 6px;
+    border-color: transparent transparent #000 transparent;
+    cursor: pointer;
+}
+
+.ui-tree-item-group>.ui-tree-item-label .ui-tree-item-toggler {
+    display: inline-block;
+}
+
+.ui-tree-item-group>.ui-tree-item-label .ui-tree-item-checkbox {
+    opacity: 0.5;
+}
+
+/* .ui-tree-item-group>.ui-tree-item-label .ui-tree-item-label-real:hover .ui-tree-item-checkbox {
+    opacity: 0.9;
+} */
+
+.ui-tree-item-label-real {
+    transition: all 0.1s linear;
+}
+
+.ui-tree-subitems {
+    font-weight: lighter;
+    padding: 0px;
+    font-family: -webkit-pictograph;
+}
+
+.ui-tree-item-label {
+    height: 40px;
+    border-bottom: solid 1px #e1e1e1;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    cursor: pointer;
+}
+
+.ui-tree-item-label:hover .ui-tree-item-label-real {
+    border-bottom: solid 5px blue;
+}
+
+label {
+    cursor: inherit;
+}

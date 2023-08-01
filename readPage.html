@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EPUB.js Scrolled Example</title>
+
+    <script src="./dist/epub.js"></script>
+    <script src="./dist/jszip.min.js"></script>
+    <script src="./dist/ui-tree.js"></script>
+    <script src="./dist/upclick-min.js"></script>
+
+    <link href="./dist/ui-tree.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="examples.css">
+    <style>
+        html {
+            font-size: 22px;
+        }
+        #navContainerParent {
+            width: 350px;
+            height: 800px;
+            padding: 15px 15px 10px 15px;
+            border: solid 1px #e4e4e4;
+            border-radius: 15px;
+            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+            display: none;
+            position: fixed;
+            z-index: 2;
+            background: #fafafa;
+            transition: all 0.3s linear;
+
+        }
+
+        #navContainer {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 7px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 7px;
+            background: #b6b6b6;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            /* border: solid 3px #465297; */
+            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+            color: #465297;
+            transition: all 0.3s linear;
+        }
+
+        .btn:hover {
+            box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+        }
+
+        .the_open_btn {
+            position: absolute;
+            top: calc(38% - 20px);
+            left: calc(50% - 102px);
+        }
+
+        .btn>span {
+            margin-left: 10px;
+            padding-left: 40px;
+            background: url(./img/openFile.png) left center no-repeat;
+            background-size: 23%;
+            height: 40px;
+            display: inline-block;
+            line-height: 40px;
+            font-family: -webkit-pictograph;
+            font-weight: 600;
+        }
+
+        .btn img {
+            margin-bottom: -3px;
+            margin-right: 10px;
+        }
+
+        #filePath {
+            position: absolute;
+            /* left:-1000px; */
+        }
+
+        .menu-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px 0px 0px 8px;
+            position: fixed;
+            z-index: 1;
+            margin-left: -40px;
+            box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+            cursor: pointer;
+            background: url(./img/menu.png) left center no-repeat;
+            background-size: 100%;
+            background-color: blue;
+            transition: all 0.2s linear;
+        }
+
+        .menu-btn:hover {
+            margin-left: -45px;
+            box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+        }
+
+        .menu-btn-vover {
+            width: 15px;
+            height: 45px;
+            position: fixed;
+            z-index: 1;
+            margin-left: -15px;
+            background-color: #fafafa;
+        }
+
+        .title-box {
+            padding: 15px;
+            background: transparent;
+            font-family: -webkit-pictograph;
+        }
+
+        .title-box>h2 {
+            margin: 0px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .title-box>span:first-of-type {
+            font-size: 18px;
+            font-style: oblique;
+            color: #616161;
+        }
+
+        .title-box>span:last-child {
+            display: block;
+            font-size: 18px;
+            width: fit-content;
+            margin-top: 10px;
+            border-bottom: solid 5px blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a id="prev" href="#prev" class="navlink">...</a> -->
+    <div id="viewContainer">
+        <div class="title-box">
+            <h2 id="bookTitle"></h2>
+            <span id="author"></span>
+            <span id="currentChapter"></span>
+        </div>
+        <div style="position: inherit;">
+            <div id="navContainerParent">
+                <div class="menu-btn" id="toggleNav"></div>
+                <div class="menu-btn-vover"></div>
+                <div id="navContainer">
+                </div>
+            </div>
+            <div id="viewer" class="scrolled">
+
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="./readPage.js"></script>
+</html>
